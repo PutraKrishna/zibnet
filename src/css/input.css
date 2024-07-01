@@ -1,0 +1,17 @@
+@import url("https://fonts.googleapis.com/css2?family=Hind+Guntur:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "animate.css";
+
+.filter-kuning {
+  filter: brightness(0) saturate(100%) invert(87%) sepia(32%) saturate(1633%) hue-rotate(326deg) brightness(103%) contrast(112%);
+}
+
+.filter-putih {
+  filter: brightness(0) saturate(100%) invert(98%) sepia(2%) saturate(267%) hue-rotate(233deg) brightness(114%) contrast(95%);
+}
