@@ -7,7 +7,7 @@
     <title>Zibnet Corp | Jasa Pasang Router di Bali</title>
     <link rel="icon" type="image/x-icon" href="./assets/image/logo/logo2.png">
   </head>
-  <body class="bg-gray-100">
+  <body class="bg-blue-100">
     
     <!-- Navbar -->
       <nav id="nav" class="flex items-center justify-between md:justify-evenly w-auto px-5 pt-3 bg-biruMuda drop-shadow-md">
@@ -178,6 +178,56 @@
         </div>
       </div>
     </section>
+
+<section class="bg-white py-16">
+  <div class="max-w-5xl mx-auto px-4">
+    <h2 class="text-3xl font-bold text-center text-biruMuda mb-8">Apa Kata Pelanggan Kami</h2>
+
+    <div class="relative">
+      <div id="testimonial-slider" class="flex transition-transform duration-500 ease-in-out overflow-hidden">
+        <?php
+          $koneksi = new mysqli("localhost", "root", "", "db_zibnet");
+          $result = $koneksi->query("SELECT * FROM testimoni ORDER BY tanggal DESC");
+
+          $count = 0;
+          echo "<div class='min-w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-2'>"; // responsive grid
+          while ($row = $result->fetch_assoc()) {
+            if ($count > 0 && $count % 3 == 0) {
+              echo "</div><div class='min-w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-2'>";
+            }
+            echo "
+              <div class='bg-gray-100 p-6 rounded-lg shadow-md'>
+                <p class='text-gray-700 mb-4 italic'>\"{$row['konten']}\"</p>
+                <div class='mt-2'>
+                  <h4 class='font-semibold text-biruMuda'>{$row['nama']}</h4>
+                  <p class='text-sm text-gray-500'>Tanggal: " . date("d M Y", strtotime($row['tanggal'])) . "</p>
+                </div>
+              </div>
+            ";
+            $count++;
+          }
+          $koneksi->close();
+          echo "</div>";
+        ?>
+      </div>
+
+      <!-- Navigasi slider -->
+      <div class="flex justify-center gap-4 mt-8">
+        <button id="prevBtn" class="w-10 h-10 rounded-full border border-gray-300 text-gray-600 hover:bg-gray-100 flex items-center justify-center">
+          <svg xmlns="http://www.w3.org/2000/svg" class="size-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
+          </svg>
+        </button>
+        <button id="nextBtn" class="w-10 h-10 rounded-full bg-blue-600 text-white hover:bg-blue-700 flex items-center justify-center">
+          <svg xmlns="http://www.w3.org/2000/svg" class="size-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
 
     <footer>
       <div class="w-full h-auto bg-biruMuda md:flex">
